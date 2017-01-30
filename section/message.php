@@ -1,10 +1,13 @@
 <?php
 
+  error_reporting(E_ALL);
+  ini_set('display_errors', true);
+
   include_once('../include/cnx.php');
 
-  $res = mysqli_query($cnx, "SELECT date_msg, message FROM profil ORDER BY id DESC");
+  $res = mysqli_query($cnx, "SELECT * FROM profil ORDER BY id DESC");
 
-  $res2 = mysqli_query($cnx, "SELECT date_msg, message FROM profil ORDER BY id DESC");
+  $res2 = mysqli_query($cnx, "SELECT * FROM profil ORDER BY id DESC");
 
 ?>
 
@@ -42,99 +45,45 @@
     <!-- MESSAGES MINITATURES -->
     <div class="col-xs-12 col-md-3 col-sm-3" style="height: 81vh; overflow: scroll;">
 
-      <div class="row list-group">
-        <div class="col-xs-12 col-md-2 col-sm-2">
-          <button class="btn btn-default" type="button" name="button">X</button>
-        </div>
-        <div class="col-xs-12 col-md-10 col-sm-10">
-          <a href="#" class="list-group-item">
-            <h5 class="list-group-item-heading">Jeannette alias Slopoke</h5>
-            <p class="list-group-item-text">Pokemon Go</p>
-            <p class="list-group-item-text">dimanche 16/01/2017</p>
-          </a>
-        </div>
-      </div>
+      <?php
 
-      <div class="row list-group">
-        <div class="col-xs-12 col-md-2 col-sm-2">
-          <button class="btn btn-default" type="button" name="button">X</button>
-        </div>
-        <div class="col-xs-12 col-md-10 col-sm-10">
-          <a href="#" class="list-group-item">
-            <h5 class="list-group-item-heading">Nolwenn alias Lala</h5>
-            <p class="list-group-item-text">Spice Girls</p>
-            <p class="list-group-item-text">dimanche 09/01/2017</p>
-          </a>
-        </div>
-      </div>
+        while ($data = mysqli_fetch_assoc($res)) {
+          echo '<div class="row list-group">
+                  <div class="col-xs-12 col-md-2 col-sm-2">
+                    <button class="btn btn-default" type="button" name="button">X</button>
+                  </div>
+                  <div class="col-xs-12 col-md-10 col-sm-10">
+                    <a onclick="koliko("'.$data["id"].'");" href="#" class="list-group-item" >
+                      <h5 class="list-group-item-heading">'.$data["first_name"].' alias '.$data["pseudo"].'</h5>
+                      <p class="list-group-item-text">'.$data["game"].'</p>
+                      <p class="list-group-item-text">'.$data["date_msg"].'</p>
+                    </a>
+                  </div>
+                </div>';
+        }
 
-      <div class="row list-group">
-        <div class="col-xs-12 col-md-2 col-sm-2">
-          <button class="btn btn-default" type="button" name="button">X</button>
-        </div>
-        <div class="col-xs-12 col-md-10 col-sm-10">
-          <a href="#" class="list-group-item">
-            <h5 class="list-group-item-heading">Mike alias Le Gentil</h5>
-            <p class="list-group-item-text">Taken</p>
-            <p class="list-group-item-text">samedi 08/01/2017</p>
-          </a>
-        </div>
-      </div>
-
-      <div class="row list-group">
-        <div class="col-xs-12 col-md-2 col-sm-2">
-          <button class="btn btn-default" type="button" name="button">X</button>
-        </div>
-        <div class="col-xs-12 col-md-10 col-sm-10">
-          <a href="#" class="list-group-item">
-            <h5 class="list-group-item-heading">Jeannette alias Slopoke</h5>
-            <p class="list-group-item-text">Pokemon Go</p>
-            <p class="list-group-item-text">dimanche 16/01/2017</p>
-          </a>
-        </div>
-      </div>
-
-      <div class="row list-group">
-        <div class="col-xs-12 col-md-2 col-sm-2">
-          <button class="btn btn-default" type="button" name="button">X</button>
-        </div>
-        <div class="col-xs-12 col-md-10 col-sm-10">
-          <a href="#" class="list-group-item">
-            <h5 class="list-group-item-heading">Nolwenn alias Lala</h5>
-            <p class="list-group-item-text">Spice Girls</p>
-            <p class="list-group-item-text">dimanche 09/01/2017</p>
-          </a>
-        </div>
-      </div>
-
-      <div class="row list-group">
-        <div class="col-xs-12 col-md-2 col-sm-2">
-          <button class="btn btn-default" type="button" name="button">X</button>
-        </div>
-        <div class="col-xs-12 col-md-10 col-sm-10">
-          <a href="#" class="list-group-item">
-            <h5 class="list-group-item-heading">Mike alias Le Gentil</h5>
-            <p class="list-group-item-text">Taken</p>
-            <p class="list-group-item-text">samedi 08/01/2017</p>
-          </a>
-        </div>
-      </div>
-
-      </div>
-
-    <!-- MESSAGES ENTIERS -->
-    <div class="col-xs-12 col-md-6 col-sm-6" style="color: balck;">
-      <div class="row">
-        <div class="col-xs-12 col-md-12 col-sm-12">
-          <h3>Rémi DE GRAUW alias Menhir</h3>
-          <p>degrauw.remi@outlook.com</p>
-          <p>dimanche 16 janvier 2017 à 14:05</p>
-        </div>
-        
-        <div class="col-xs-12 col-md-12 col-sm-12">
-          <p>Mon message le plus beau du monde ! Bonjour le numérique =D</p>
-        </div>
-      </div>
+      ?>
     </div>
+    <!-- MESSAGES ENTIERS -->
+    <?php
+
+      while($data2 = mysqli_fetch_assoc($res2)){
+        echo '<div id="'.$data2["id"].'" class="koliko col-xs-12 col-md-6 col-sm-6" style="color: black;">
+                <div class="row">
+                  <div class="col-xs-12 col-md-12 col-sm-12">
+                    <h3>'.$data2["first_name"].' '.$data2["last_name"].' alias '.$data2["pseudo"].'</h3>
+                    <p>'.$data2["email"].'</p>
+                    <p>'.$data2["date_msg"].'</p>
+                  </div>
+
+                  <div class="col-xs-12 col-md-12 col-sm-12">
+                    <p>'.$data2["message"].'</p>
+                  </div>
+                </div>
+              </div>';
+      }
+
+    ?>
+
   </div>
 </section>

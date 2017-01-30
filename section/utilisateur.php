@@ -37,13 +37,13 @@
             }
             echo '<td>
                     <form class="" action="" method="post">
-                      <input type="hidden" name="id" value="'.$data['id'].'">
+                      <input type="hidden" name="id" value="">
                       <button type="submit" name="button">V</button>
                     </form>
                   </td>';
             echo '<td>
                     <form class="" action="" method="post">
-                      <input type="hidden" name="id" value="'.$data['id'].'">
+                      <input type="hidden" name="id" value="">
                       <button type="submit" name="button">X</button>
                     </form>
                   </td>';
