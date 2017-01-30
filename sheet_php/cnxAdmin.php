@@ -12,7 +12,7 @@
 
   // echo $username."<br>"; echo $pwd."<br>";
 
-  $res = mysqli_query($cnx, "SELECT * FROM Admin WHERE username='$username' and password='$pwd' ");
+  $res = mysqli_query($cnx, "SELECT * FROM admin WHERE username='$username' and password='$pwd' ");
 
   $data = mysqli_fetch_assoc($res);
   // var_dump($data); echo "<br><br>";

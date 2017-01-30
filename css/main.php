@@ -1,6 +1,6 @@
 <?php
 
-  $cnx = mysqli_connect("localhost", "root", "root", "DUTIROIR") or die("error".mysqli_connect_errno());
+  $cnx = mysqli_connect("localhost", "root", "root", "Mme Dutiroir") or die("error".mysqli_connect_errno());
   $res = mysqli_query($cnx, "SELECT * FROM parameters ORDER BY id DESC LIMIT 1");
   $data = mysqli_fetch_assoc($res);
 
@@ -132,7 +132,7 @@ footer {
 }
 
 .onglet{
-  height:120vh;
+  height: 90vh;
   padding-top: 10px;
   padding-bottom: 10px;
   border: 0px 1px 1px 0px solid black;
@@ -148,6 +148,10 @@ footer {
 }
 
 /* ----- Personnalisation du visuel ----- */
+.photoMiniature{
+  height: 50px; width: auto;
+}
+
 .parametres{
   padding: 20px;
   background-color: rgb(239, 239, 239);

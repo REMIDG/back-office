@@ -1,5 +1,8 @@
 <?php
 
+  error_reporting(E_ALL);
+  ini_set('display_errors', true);
+
   session_start();
 
   // echo "connexion = ".isset($_SESSION['username']);
@@ -66,69 +69,86 @@
         <!-- Content Row -->
         <div class="row">
             <!-- Form Column -->
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <!-- Contact form -->
                 <form enctype="multipart/form-data" name="sentMessage" id="contactForm" action="../sheet_php/msg.php" method="post" novalidate>
+                  <!-- Part form left -->
+                  <div class="row">
+                    <div class="col-xs-12 col-md-6 col-sm-6">
+                      <div class="control-group form-group">
+                          <div class="controls">
+                              <label>Pseudo :</label>
+                              <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="Pseudo*" required data-validation-required-message="Veuillez entrer votre pseudo.">
+                              <p class="help-block"></p>
+                          </div>
+                      </div>
 
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Pseudo :</label>
-                            <input type="text" name="pseudo" class="form-control" id="pseudo" placeholder="Pseudo*" required data-validation-required-message="Please enter your name.">
-                            <p class="help-block"></p>
-                        </div>
+                      <div class="control-group form-group">
+                          <div class="controls">
+                              <label>Prénom :</label>
+                              <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Prénom*" required data-validation-required-message="Veuillez entrer votre prénom.">
+                          </div>
+                      </div>
+
+                      <div class="control-group form-group">
+                          <div class="controls">
+                              <label>Nom :</label>
+                              <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Nom*" required data-validation-required-message="Veuillez entrer votre nom.">
+                          </div>
+                      </div>
+
+                      <div class="control-group form-group">
+                          <div class="controls">
+                              <label>E-mail :</label>
+                              <input type="email" name="email" class="form-control" id="email" placeholder="Email*" required data-validation-required-message="Veuillez entrer votre adresse e-mail.">
+                          </div>
+                      </div>
+
+                      <div class="control-group form-group">
+                          <div class="controls">
+                              <label>Jeux :</label>
+                              <input type="text" name="game" class="form-control" id="game" placeholder="Celui où vous avez le plus d'heure à votre actif*" required data-validation-required-message="Veuillez entrer le nom du jeu auquel vous jouez.">
+                          </div>
+                      </div>
                     </div>
 
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Prénom :</label>
-                            <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Prénom*" required data-validation-required-message="Veuillez entrer votre prénom.">
-                        </div>
-                    </div>
+                  <!-- Part form right -->
+                    <div class="col-xs-12 col-md-6 col-sm-6">
+                      <div class="control-group form-group">
+                          <div class="controls">
+                              <label>Date de naissance :</label>
+                              <input type="date" name="birthday_date" class="form-control" id="birthday_date" placeholder="xx/xx/xxxx">
+                          </div>
+                      </div>
 
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Nom :</label>
-                            <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Nom*" required data-validation-required-message="Veuillez entrer votre nom.">
-                        </div>
-                    </div>
+                      <div class="control-group form-group">
+                          <div class="controls">
+                              <label>Message :</label>
+                              <textarea rows="4" cols="100" name="message" class="form-control" id="message" placeholder="Posez votre question ici ou laissez moi simplement votre message*" required data-validation-required-message="Veuillez écrire votre message avant envoi." maxlength="999" style="resize:none"></textarea>
+                          </div>
+                      </div>
 
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>E-mail :</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Email*" required data-validation-required-message="Veuillez entrer votre adresse e-mail.">
-                        </div>
-                    </div>
+                      <div class="control-group form-group">
+                          <div class="controls">
+                              <label>Image de profil :</label>
+                              <input type="file" name="img" class="form-control" id="img">
+                          </div>
+                      </div>
 
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Jeux :</label>
-                            <input type="text" name="game" class="form-control" id="game" placeholder="Celui où vous avez le plus d'heure à votre actif*" required data-validation-required-message="Veuillez entrer le nom du jeu auquel vous jouez.">
-                        </div>
-                    </div>
+                        <button type="submit" class="btn btn-primary center-block">Send Message</button><br>
 
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Date de naissance :</label>
-                            <input type="date" name="birthday_date" class="form-control" id="birthday_date" placeholder="Date de naissance*" required data-validation-required-message="Veuillez entrer correctement votre date de naissance.">
-                        </div>
-                    </div>
+                        <?php
+                        $_SESSION['envoi'] = "";
+                        
+                        if ($_SESSION['envoi'] = "yes") {
+                          echo "<div class='text-center'><p>Votre compte a été créé avec succès</p></div>";
+                        }elseif($_SESSION['envoi'] = "no"){
+                          echo "<div><p>Erreur lors de l'envoie des données veuillez recommencer dans 5 minutes</p></div>";
+                        } ?>
 
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Message :</label>
-                            <textarea rows="4" cols="100" name="message" class="form-control" id="message" placeholder="Posez votre question ici ou laissez moi simplement votre message*" required data-validation-required-message="Veuillez écrire votre message avant envoi." maxlength="999" style="resize:none"></textarea>
-                        </div>
                     </div>
+                  </div>
 
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label>Image de profil :</label>
-                            <input type="file" name="img" class="form-control" id="img">
-                        </div>
-                    </div>
-
-                    <div id="success"></div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
         </div>

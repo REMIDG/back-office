@@ -8,7 +8,7 @@
 
   <!-- Visuel du site web en miniature -->
   <div id="miniature" class="row">
-    <section class="col-xs-12 col-md-9 col-sm-9" style="height: 200px;">
+    <section class="col-xs-12 col-md-9 col-sm-9">
 
         <!-- Navigation -->
         <nav class="navbar" role="navigation">
@@ -33,7 +33,7 @@
         <!-- Icons Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Lorem Ipsum</h1>
+                <h1 class="">Lorem Ipsum</h1>
                 <ol class="breadcrumb">
                     <li><a id="li">Home</a></li>
                     <li class="active">Lorem Ipsum</li>
@@ -49,18 +49,18 @@
               </div>
               <div class="panel-body">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                <a class="btn btn-default">Learn More</a>
+                <a class="btn ">Learn More</a>
               </div>
             </div>
           </div>
 
           <!-- image portfolio -->
           <div class="col-md-4 col-md-offset-2 img-portfolio">
-              <img class="img-responsive img-hover" src="../img/portfolio1.jpg" alt="">
+              <img class="photoMiniature img-responsive img-hover" src="../img/portfolio1.jpg" alt="">
               <h3>Username</h3>
               <p>22 ans <span>(19/12/1994)</span></p>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio.</p>
               <h4>Games</h4>
               <table class="table table-striped  table-hover">
                 <thead>
